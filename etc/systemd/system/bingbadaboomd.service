@@ -1,0 +1,11 @@
+[Unit]
+Description=Bingbadaboom System Stability Daemon
+
+[Service]
+Type=simple
+PIDFile=/var/run/bingbadaboomd.pid
+
+ExecStart=/usr/local/bin/bingbadaboomd.py
+
+[Install]
+WantedBy=multi-user.target
