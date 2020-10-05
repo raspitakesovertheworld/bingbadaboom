@@ -26,6 +26,8 @@ from bingbadaboom_module import *
 #on program start). Count the minutes and hours real runtime (allows for hibernation and sleep mode) and 
 #notes the crashes that occur
 
+#New Version test
+
 #Android:
 #lockfile="/sdcard/sl4a/bingbadaboomd/bingbadaboomd.lock"
 #total_file = "/sdcard/sl4a/bingbadaboomd/bingbadaboomd_total.yml"
