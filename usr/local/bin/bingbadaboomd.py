@@ -26,7 +26,6 @@ from bingbadaboom_module import *
 #on program start). Count the minutes and hours real runtime (allows for hibernation and sleep mode) and 
 #notes the crashes that occur
 
-#New Version test
 
 #Android:
 #lockfile="/sdcard/sl4a/bingbadaboomd/bingbadaboomd.lock"
@@ -117,7 +116,7 @@ if os.path.isfile(total_file):
 	total = load_stats_file()
 else:
 	#file is not there, not loading from yaml, so we create an empty object
-	total = {"total_hours": 0, "minutes": 0, "total_crashes": 0, "crash_dates": [],"heartbeat":True,"netdevice":"etho","netmodule":"e1000e"}
+	total = {"total_hours": 0, "minutes": 0, "total_crashes": 0, "crash_dates": [],"heartbeat":False,"netdevice":"etho","netmodule":"e1000e"}
 
 
 
