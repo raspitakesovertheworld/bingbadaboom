@@ -26,7 +26,6 @@ from bingbadaboom_module import *
 #on program start). Count the minutes and hours real runtime (allows for hibernation and sleep mode) and 
 #notes the crashes that occur
 
-
 #Android:
 #lockfile="/sdcard/sl4a/bingbadaboomd/bingbadaboomd.lock"
 #total_file = "/sdcard/sl4a/bingbadaboomd/bingbadaboomd_total.yml"
@@ -74,6 +73,12 @@ def load_stats_file():
 
 	return total
 	
+def turn_numlock_on(state):
+	if state == True:
+		os.system("setleds -L +num < /dev/tty1")
+        else:
+		os.system("setleds -L -num < /dev/tty1")
+
 def log_event(priority, log_string):
 	#todo: use syslogd, create custom log file, a lot more trickier than expected
 	#so writing logs by hand for now
@@ -87,18 +92,23 @@ def log_event(priority, log_string):
 	syslog.syslog(priority, converted_time+" "+ log_string)
 
 def do_heartbeat(netdevice,netmodule):
-	#this flashes the NIC LED for 2 seconds as a heart beat
+	#this flashes the keyboard num lock
 	#do this whole bit 6 times
 	start_time=time.time()
 	for cnt in range(0,6):
-	
-		#try opening netdev, if fail, remove and load module again
-		returncode = os.system("ethtool -p "+ netdevice + " 2")
-	
-		if returncode != 0:
-			print "could not open netdevice, trying module "+ netmodule + " and then opening netdevice "+ netdevice
-			os.system("modprobe -r "+netmodule+ "; modprobe "+netmodule +" ; ethtool -p "+netdevice+" 2")
-		time.sleep(8)
+		
+		#unique recognizable pattern, beating heart
+		time.sleep(0.66)
+		turn_numlock_on(True)
+		time.sleep(0.1)
+		turn_numlock_on(False)
+		
+		time.sleep(0.36)
+		turn_numlock_on(True)
+		time.sleep(0.1)
+		turn_numlock_on(False)
+		time.sleep(1.1)
+		
 	end_time=time.time()
 
 
@@ -116,7 +126,7 @@ if os.path.isfile(total_file):
 	total = load_stats_file()
 else:
 	#file is not there, not loading from yaml, so we create an empty object
-	total = {"total_hours": 0, "minutes": 0, "total_crashes": 0, "crash_dates": [],"heartbeat":False,"netdevice":"etho","netmodule":"e1000e"}
+	total = {"total_hours": 0, "minutes": 0, "total_crashes": 0, "crash_dates": [],"heartbeat":True,"netdevice":"etho","netmodule":"e1000e"}
 
 
 
