@@ -7,10 +7,6 @@ from bingbadaboom_module import *
 #Don't let any OS get away with fatal crashes anymore, know your 
 #Markus-Index (system stability index) and compare it with other systems
 #Use bingbadaboom-util to see calculate Markus-Index
-#Authors notice:
-#Yes, I'm using tabs. Convert to spaces if you want that. I always write my scripts with tabs 
-#as that is why tabs are for, welcome in the 21st century! ;-)
-#Systematically more correct way for me, even if in violation of Python PEP
 
 #I wrote bingbadaboom because I got tired of systems crashing on me and people pretenting 
 #OS were more stable than I knew they were. NOW you can go and compare them, 
