@@ -4,3 +4,4 @@ This project was created out of the need to measure system stability on Linux. T
 
 The idea of Bingbadaboom is also to make systems comparable. Years back, I noticed that my Android smartphone was crashing a little too often and I wanted to track this and compare it to my much more reliable Linux desktops, laptops and servers.
 
+Note: this code structure is in form of a debian package ready to be packaged.
