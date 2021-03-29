@@ -7,7 +7,7 @@ from bingbadaboom_module import *
 
 parser = optparse.OptionParser()
 
-parser.usage="%prog [options]\n\nThis tool allows you to calculate the Markus-index (stability index) for your system based on the hours it has been running and the crashes it has in the same time. Why Markus-Index? Markus is the person that cares about that your systems don't crash and if, that it is called out. Shows shitty buggy OS code.\nWritten by Markus Bawidamann D20130901."
+parser.usage="%prog [options]\n\nThis tool allows you to calculate the Markus-index (stability index) for your system based on the hours it has been running and the crashes it has in the same time. Why Markus-Index? Markus is the person that cares about that your systems don't crash and if, that it is called out. \nWritten by Markus Bawidamann D20130901."
 
 
 options, args = parser.parse_args()
