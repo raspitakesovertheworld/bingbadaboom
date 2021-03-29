@@ -43,10 +43,10 @@ hours = float(total["total_hours"])
 
 
 h = float(hours)
-d = float(hours/24)
-w = float(d/7)
-m = float(w/4)
-y = float(m/12)
+d = round(float(hours/24),2)
+w = round(float(d/7),2)
+m = round(float(w/4),2)
+y = round(float(m/12),2)
 
 
 
