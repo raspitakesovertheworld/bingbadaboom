@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 import os, signal, sys, time, psutil, yaml, syslog
 from bingbadaboom_module import *
 
@@ -44,8 +44,8 @@ def touch_lock_file():
 	os.utime(lockfile, None)
 
 def handler(signum, frame):
-	print 'Bingbadaboom: Signal handler called with signal', signum
-	print "Removing lock file..."
+	print('Bingbadaboom: Signal handler called with signal', signum)
+	print("Removing lock file...")
 	os.remove(lockfile)
 	os.remove(pidfile)
 	log_event(syslog.LOG_NOTICE,"Bingbadaboom: clean shutdown")
@@ -130,15 +130,15 @@ else:
 pid = str(os.getpid())
 
 if os.path.isfile(pidfile):
-	print "pidfile already exists"
+	print("pidfile already exists")
 	pf = open(pidfile)
 	pidstr = pf.read()
 	print pidstr
 	if psutil.pid_exists(int(pidstr)):
-		print "process is already running, abort!"
+		print("process is already running, abort!")
 		sys.exit()
 	else:
-		print "pid file exists, but process crapped up and left it, erasing it"
+		print("pid file exists, but process crapped up and left it, erasing it")
 		os.remove(pidfile)
 		file(pidfile, 'w').write(pid)
 else:
@@ -150,7 +150,7 @@ else:
 #check if lock file is there
 if os.path.exists(lockfile):
 	log_event(syslog.LOG_NOTICE,"Bingbadaboom: System Startup")
-	print "We had a crash!"
+	print("We had a crash!")
 	mod_time_float = os.path.getmtime(lockfile)
 	
 	#log the crash in the log
@@ -180,13 +180,13 @@ if os.path.exists(lockfile):
 	#add the new list to the dict
 	total["crash_dates"]=l_tmp
 
-	print total
+	print(total)
 
 #If lock file is missing, there was no crash
 
 else:
-	print "Lockfile was not there = no crash"
-	print "Creating file..."
+	print("Lockfile was not there = no crash")
+	print("Creating file...")
 	log_event(syslog.LOG_NOTICE,"CrashNotifier: System Startup")
 	f= open(lockfile,"w")
 	f.close()
