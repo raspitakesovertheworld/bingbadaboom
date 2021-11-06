@@ -1,7 +1,11 @@
 #! /usr/bin/env python
 
 
-import time, optparse,sys, yaml, os
+import time\
+import optparse\
+import sys\
+import yaml\
+import os
 from bingbadaboom_module import *
 
 
@@ -50,9 +54,9 @@ y = float(m/12)
 
 
 
-print "Statistics:"
-print "======================="
-print "Your system was running a total of " + str(hours) + " hours"
+print("Statistics:")
+print("=======================")
+print("Your system was running a total of " + str(hours) + " hours")
 if d >= 1:
 	print "or " +str(d) +" days"
 	
