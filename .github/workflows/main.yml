@@ -1,7 +1,9 @@
+
+on: push
+  
 jobs:
   build-deb:
     runs-on: ubuntu-latest
-    on: push
     steps:
       - uses: actions/checkout@v2
 
@@ -10,15 +12,8 @@ jobs:
         with:
           args: --unsigned-source --unsigned-changes
 
-      - uses: docker://amazon/aws-cli:latest
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - uses: actions/upload-artifact@v1
         with:
-          args: >-
-            s3
-            cp
-            ${{ steps.build.outputs.filename }}
-            s3://my-bucket-name/${{ steps.build.outputs.filename }}
-            --content-type "application/vnd.debian.binary-package"
-
+          name: ${{ steps.build.outputs.filename }}
+          path: ${{ steps.build.outputs.filename }}
+          
