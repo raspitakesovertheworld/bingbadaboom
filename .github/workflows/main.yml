@@ -1,4 +1,6 @@
-on: push
+#package build and push to S3
+
+#on: push
 jobs:
   build-deb:
     runs-on: ubuntu-latest
