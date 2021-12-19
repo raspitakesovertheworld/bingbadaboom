@@ -1,6 +1,7 @@
 jobs:
   build-deb:
     runs-on: ubuntu-latest
+    on: push
     steps:
       - uses: actions/checkout@v2
 
