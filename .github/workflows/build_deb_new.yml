@@ -2,8 +2,6 @@ name: build_deb_package
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
 
 jobs:
   build:
